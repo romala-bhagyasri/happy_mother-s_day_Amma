@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Mother's Day, Amma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(circle at top left, hsl(300, 3%, 81%), hwb(135 68% 30% / 0.31) 30%, hsla(300, 4%, 89%, 0.345) 60%, hsl(300, 2%, 49%));
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      background: #c3c8cea7;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 14px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #d61569;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: hsl(340, 51%, 49%);
+    }
+
+    .heart {
+      position: fixed;
+      color: #e9197ed9;
+      animation: floatUp 6s linear infinite;
+      font-size: 30px;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f9c74f;
+      top: -10px;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #6a1b9a;
+      line-height: 1.6;
+      background-color: #ffe082;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .corner-effect {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: shimmer 2s infinite alternate;
+      z-index: 3;
+    }
+
+    .corner-top-left { top: 8px; left: 8px; }
+    .corner-top-right { top: 8px; right: 8px; }
+    .corner-bottom-left { bottom: 8px; left: 8px; }
+    .corner-bottom-right { bottom: 8px; right: 8px; }
+
+    @keyframes shimmer {
+      0% { box-shadow: 0 0 8px 2px #fff; }
+      100% { box-shadow: 0 0 14px 5px #ffc0cb; }
+    }
+
+    .heart-float {
+      position: fixed;
+      font-size: 24px;
+      color: #ff4d6d;
+      animation: floatHeart 5s linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body onload="startConfetti(); addSparkles(); floatCornerHearts();">
+
+  <div class="container">
+    <h1 style="color: #d81b60;">HAPPY MOTHER'S DAY AMMA❤️</h1>
+
+    <img src="amma.jpeg" alt="amma">
+
+    <p style="color: #ff4081;"><em>May Lord Ganesha remove all your obstacles and bring peace into your life. 💖</em></p>
+
+    <button onclick="playSong()">Listen to Amma's Song 💞</button>
+    <audio id="soulSong" src="maaa.mp3" preload="auto"></audio>
+
+    <p style="color: #c2185b; font-weight: bold;">This song speaks the love I have for you, Amma — endless, timeless, and pure ✨</p>
+
+    <audio id="bg-music" autoplay loop>
+      <source src="maaa.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <button onclick="showHearts()">My Strength 💪❤️</button>
+
+    <p style="color: #6a1b9a;">
+      <strong>AMMA❤️,</strong> the one whose silent sacrifices shaped my world,<br>
+      whose love asks for nothing but gives me everything,<br>
+      and whose presence is the purest blessing I’ll ever know.<br>
+      <strong><em>The Person Who Was With Me In Every Pain</em></strong>
+    </p>
+
+    <button><strong>A Heart That Never Breaks</strong></button>
+
+    <p style="color: #4a148c;">
+      My mother has faced so many challenges in life, but she never gave up.<br>
+      No matter how hard things got, she stayed strong for everyone around her.<br>
+      Her love never changed, and her heart never broke — it only grew stronger. 💝
+    </p>
+
+    <button onclick="toggleMessage()">Reveal My Heartfelt Message 💌</button>
+
+    <div id="message">
+      <p>There’s a person in my life who is not just a mother, but a superhero in every way. She is my <strong>everything</strong> — my constant source of strength, the one who lifts me when I fall, and the one who always believes in me, even when I can’t believe in myself.</p>
+      <p>When I feel low, she is the <strong>supercharge</strong> that gives me energy and drive to keep going. Her words of encouragement and support are a constant reminder that I am never alone in my struggles.</p>
+      <p>She empowers me, pushes me to be better, and reminds me that I have the strength to overcome anything.</p>
+      <p><strong>She is my motivator, my strength, my superhero.</strong></p>
+    </div>
+
+    <button onclick="showHearts()">My Heart for You, Amma 💖</button>
+
+<p style="margin-top: 30px; font-size: 1.1em; color: #d81b60;">
+  With all my love, always — <strong>your Bhagii Thalli 💕</strong>
+</p>
+</div>
+
+
+  <script>
+    function playSong() {
+      document.getElementById("soulSong").play();
+    }
+
+    function showHearts() {
+      for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+
+    function toggleMessage() {
+      var message = document.getElementById("message");
+      message.style.display = message.style.display === "block" ? "none" : "block";
+    }
+
+    function startConfetti() {
+      for (let i = 0; i < 80; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDelay = (Math.random() * 5) + "s";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    function addSparkles() {
+      const corners = ["top-left", "top-right", "bottom-left", "bottom-right"];
+      corners.forEach(pos => {
+        let sparkle = document.createElement("div");
+        sparkle.className = `corner-effect corner-${pos}`;
+        document.body.appendChild(sparkle);
+      });
+    }
+
+    function floatCornerHearts() {
+      for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart-float";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.fontSize = (20 + Math.random() * 15) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+</body>
+</html>
